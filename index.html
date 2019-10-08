@@ -11,6 +11,15 @@
     <h1>Saver</h1>
     <script>
         require('./render.js');
-    </script>
+
+        function createScreenshot(){
+            document.getElementById('statusalert').textContent = "Need screenshot";
+        }
+    </script>    <div class="container">
+        <button type="button" onclick="createScreenshot()" class="btn btn-primary">Crate Screenshot</button>
+        <div id="statusalert" class="alert alert-primary" role="alert">
+            Status Alert!
+        </div>
+    </div>
 </body>
 </html>
