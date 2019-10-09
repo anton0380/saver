@@ -8,14 +8,13 @@ function createWindow() {
     win = new BrowserWindow({
         width: 700,
         height: 500,
-        icon: '/img/icon.png'
+        icon: __dirname + '/img/icon.png',
+        webPreferences: {
+          nodeIntegration: false
+        }
     });
 
-    win.loadURL(url.format({
-        pathname: path.join(__dirname, 'index.html'),
-        protocol: 'file:',
-        slashes: true
-    }));
+    win.loadFile('index.html')
 
     //win.webContents.openDevTools();
 
@@ -27,5 +26,7 @@ function createWindow() {
 app.on('ready', createWindow);
 
 app.on('window-all-closed', () => {
-    app.quit();
+    if (process.platform !== 'darwin') {
+        app.quit();
+    }
 });
